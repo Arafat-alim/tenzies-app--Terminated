@@ -6,8 +6,8 @@ export default function Die(props) {
     backgroundColor: props.held ? "#59E391" : "white",
   };
   return (
-    <div className="die-face" style={styles}>
-      <div className="die-num">1</div>
+    <div className="die-face" style={styles} onClick={props.hold}>
+      <div className="die-num">{props.value}</div>
     </div>
   );
 }
