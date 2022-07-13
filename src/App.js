@@ -5,8 +5,6 @@ function App() {
   const [tenzies, setTenzies] = React.useState(false);
   const [dice, setDice] = React.useState(allNewDice());
 
-  console.log(dice);
-
   React.useEffect(() => {
     let firstValue = dice[0].value;
     let allHeld = dice.every((die) => die.held);
@@ -21,7 +19,6 @@ function App() {
   function randomValue() {
     return Math.ceil(Math.random() * 6);
   }
-  console.log(randomValue());
 
   //function to create a numbers total 10
   function allNewDice() {
@@ -39,7 +36,7 @@ function App() {
 
   function holdDice() {}
   const dieElement = dice.map((die) => {
-    <Die key={die.id} hold={() => holdDice(die.id)} {...die} />;
+    return <Die key={die.id} hold={() => holdDice(die.id)} {...die} />;
   });
 
   return (
