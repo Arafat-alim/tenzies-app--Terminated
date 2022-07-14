@@ -34,10 +34,20 @@ function App() {
     return newArry;
   }
 
-  function holdDice() {}
+  function holdDice(id) {
+    setDice((prevDice) => {
+      prevDice.map((die) => {
+        return die.id === id ? { ...die, held: !die.held } : die;
+      });
+    });
+  }
   const dieElement = dice.map((die) => {
     return <Die key={die.id} hold={() => holdDice(die.id)} {...die} />;
   });
+
+  function rollDice() {
+    setDice(allNewDice());
+  }
 
   return (
     <main>
@@ -47,7 +57,9 @@ function App() {
         current value between rolls.
       </p>
       <div className="die-container">{dieElement}</div>
-      <button className="roll-dice">{tenzies ? "Reset" : "Roll"}</button>
+      <button className="roll-dice" onClick={rollDice}>
+        {tenzies ? "Reset" : "Roll"}
+      </button>
     </main>
   );
 }
