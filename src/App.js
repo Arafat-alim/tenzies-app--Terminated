@@ -42,7 +42,7 @@ function App() {
     });
   }
   const dieElement = dice.map((die) => {
-    return <Die key={die.id} hold={() => holdDice(die.id)} {...die} />;
+    return <Die key={die.id} hold={() => holdDice(die.id)} />;
   });
 
   function rollDice() {
